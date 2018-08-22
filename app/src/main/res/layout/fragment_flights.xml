@@ -6,6 +6,13 @@
     tools:context=".Flights.FlightsFragment">
 
     <include
-        layout="@layout/list_item_flights"/>
+        android:id="@+id/layoutSearchFlights"
+        android:visibility="visible"
+        layout="@layout/flight_search"/>
+
+    <include
+        android:id="@+id/layoutViewFlights"
+        android:visibility="gone"
+        layout="@layout/flight_listings"/>
 
 </FrameLayout>

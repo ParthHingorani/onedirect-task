@@ -15,4 +15,7 @@
 
     <!-- list_item_bookings.xml -->
     <color name="colorFlightConfirmed">#2ca554</color>
+
+    <!-- flight_search.xml -->
+    <color name="colorFlightSearch">#8d35bb</color>
 </resources>

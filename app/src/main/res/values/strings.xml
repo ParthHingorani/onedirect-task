@@ -11,4 +11,7 @@
 
     <!-- list_item_bookings.xml -->
     <string name="confirmed">Confirmed</string>
+
+    <!-- flight_search.xml -->
+    <string name="search_flight">Search your\nflight:</string>
 </resources>
