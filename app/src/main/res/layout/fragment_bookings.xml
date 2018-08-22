@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Bookings.BookingsFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_bookings" />
+    <include
+        layout="@layout/list_item_bookings"/>
 
 </FrameLayout>

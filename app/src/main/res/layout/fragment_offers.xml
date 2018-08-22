@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Offers.OffersFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_offers" />
+    <include
+        layout="@layout/list_item_offers"/>
 
 </FrameLayout>

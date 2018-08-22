@@ -4,4 +4,15 @@
     <color name="colorPrimaryDark">#c60042</color>
     <color name="colorPrimaryLight">#ff7b9a</color>
     <color name="colorAccent">#7d7d7d</color>
+
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+
+    <!-- list_item_flights.xml -->
+    <color name="colorFlightTime">#312b2b</color>
+    <color name="colorFlightPrice">#3190f2</color>
+
+    <!-- list_item_bookings.xml -->
+    <color name="colorFlightConfirmed">#2ca554</color>
 </resources>

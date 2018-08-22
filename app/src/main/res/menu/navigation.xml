@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_flights"
-        android:icon="@drawable/baseline_flight_takeoff_white_24dp"
+        android:icon="@drawable/baseline_flight_takeoff_black_24dp"
         android:title="@string/title_flights" />
 
     <item
@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_offers"
-        android:icon="@drawable/baseline_new_releases_white_24dp"
+        android:icon="@drawable/baseline_new_releases_black_24dp"
         android:title="@string/title_offers" />
 
     <item
