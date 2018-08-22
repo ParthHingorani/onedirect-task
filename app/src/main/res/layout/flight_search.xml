@@ -105,13 +105,11 @@
                     android:layout_margin="16dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/baseline_arrow_forward_white_24dp"
-                    android:backgroundTint="@color/colorPrimaryLight"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
                     app:fabSize="normal"
                     app:elevation="4dp"
-                    app:rippleColor="@color/colorWhite"/>
+                    app:rippleColor="@color/colorPrimary"/>
 
             </LinearLayout>
 
