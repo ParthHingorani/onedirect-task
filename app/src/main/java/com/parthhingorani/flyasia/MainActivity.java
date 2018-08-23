@@ -14,6 +14,8 @@ import com.parthhingorani.flyasia.Profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    BottomNavigationView navigation;
+
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         loadFragment(new FlightsFragment());
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 }

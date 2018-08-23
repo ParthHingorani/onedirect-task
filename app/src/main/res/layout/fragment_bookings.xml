@@ -5,7 +5,20 @@
     android:layout_height="match_parent"
     tools:context=".Bookings.BookingsFragment">
 
-    <include
-        layout="@layout/list_item_bookings"/>
+    <TextView
+        android:id="@+id/emsgNoBookings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/error_no_bookings"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvBookedFlights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTransparent"/>
 
 </FrameLayout>

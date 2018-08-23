@@ -1,14 +1,20 @@
 package com.parthhingorani.flyasia.Flights;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.parthhingorani.flyasia.Database;
 import com.parthhingorani.flyasia.R;
 
 import java.util.List;
@@ -17,10 +23,12 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
 
     private List<Flight> flightsList;
     static Context context;
+    static Database database;
 
-    public FlightsAdapter(Context context, List<Flight> flightsList){
-        FlightsAdapter.context =context;
+    public FlightsAdapter(Context context, List<Flight> flightsList, Database database){
+        FlightsAdapter.context = context;
         this.flightsList = flightsList;
+        FlightsAdapter.database = database;
     }
 
     @Override
@@ -44,6 +52,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
 
         AppCompatImageView ivFlightImage;
         TextView tvFlightName, tvDepTime, tvArrTime, tvDuration, tvHalt, tvPrice;
+        Button btBook;
 
         private MyViewHolder(View itemView) {
             super(itemView);
@@ -55,6 +64,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
             tvDuration = itemView.findViewById(R.id.tvDuration);
             tvHalt = itemView.findViewById(R.id.tvHalt);
             tvPrice = itemView.findViewById(R.id.tvPrice);
+            btBook = itemView.findViewById(R.id.btBook);
         }
 
         public void setData(final Flight data){
@@ -64,9 +74,31 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
             tvDuration.setText(data.duration);
             tvHalt.setText(data.halt);
             tvPrice.setText(data.cost);
+            
             Glide.with(context)
                     .load(data.airlineURL)
                     .into(ivFlightImage);
+
+            btBook.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Confirm Booking?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    database.insertBookedFlight(data.airlineURL, data.airlineName, data.duration, data.departureTime, data.arrivalTime,
+                                            data.halt, data.cost, data.source, data.destination, data.date);
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).create().show();
+                }
+            });
         }
     }
 }

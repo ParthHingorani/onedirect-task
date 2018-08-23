@@ -14,4 +14,10 @@
 
     <!-- flight_search.xml -->
     <string name="search_flight">Search your\nflight:</string>
+
+    <!-- flight_listing.xml -->
+    <string name="error_no_flights">We\'re sorry, no flights are available on your preferences. Please consider searching again.</string>
+
+    <!-- fragment_bookings.xml -->
+    <string name="error_no_bookings">You haven\'t booked any flights yet.</string>
 </resources>
