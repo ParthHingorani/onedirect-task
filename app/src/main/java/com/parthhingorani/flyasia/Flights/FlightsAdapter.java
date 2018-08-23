@@ -101,6 +101,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
                                 public void onClick(DialogInterface dialog, int which) {
                                     database.insertBookedFlight(data.airlineURL, data.airlineName, data.duration, data.departureTime, data.arrivalTime,
                                             data.halt, data.cost, data.source, data.destination, data.date);
+                                    Toast.makeText(context,"Booked Successfully", Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .setNegativeButton("No", new DialogInterface.OnClickListener() {
