@@ -6,7 +6,7 @@ Flight system Android app for OneDirect recruitment round 2.
 
 ### Procedure 1:
 
-- Visit [this link](https://github.com/ParthHingorani/onedirect-task/tree/master/FlyAsia/FlyAsia.apk) and download flights.apk in your android phone.
+- Visit [this link](https://github.com/ParthHingorani/onedirect-task/tree/master/FlyAsia/FlyAsia.apk) and download FlyAsia.apk in your android phone.
 - Open the file when downloaded on follow on-screan steps.
 
 ### Procedure 2:
