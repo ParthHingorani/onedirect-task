@@ -6,7 +6,7 @@ Flight system Android app for OneDirect recruitment round 2.
 
 ### Procedure 1:
 
-- Visit [this link]() and download flights.apk in your android phone.
+- Visit [this link](https://github.com/ParthHingorani/onedirect-task/tree/master/FlyAsia) and download flights.apk in your android phone.
 - Open the file when downloaded on follow on-screan steps.
 
 ### Procedure 2:
@@ -20,14 +20,19 @@ Flight system Android app for OneDirect recruitment round 2.
 ## Screenshots:
 
 ### Search Flights:
+!(https://github.com/ParthHingorani/onedirect-task/blob/master/FlyAsia/search.png)
 
 ### View Flights:
+!(https://github.com/ParthHingorani/onedirect-task/blob/master/FlyAsia/flights.png)
 
 ### Confirm Flights:
+!(https://github.com/ParthHingorani/onedirect-task/blob/master/FlyAsia/confirm.png)
 
 ### Booking History:
+!(https://github.com/ParthHingorani/onedirect-task/blob/master/FlyAsia/bookings.png)
 
 ### Offers:
+!(https://github.com/ParthHingorani/onedirect-task/blob/master/FlyAsia/offers.png)
 
 
 ## Note:
