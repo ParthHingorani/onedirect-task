@@ -19,18 +19,22 @@ import com.parthhingorani.flyasia.R;
 
 import java.util.List;
 
+//recyclerview adapter for flight queries
 public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHolder> {
 
+    //data structures
     private List<Flight> flightsList;
     static Context context;
     static Database database;
 
+    //constructor
     public FlightsAdapter(Context context, List<Flight> flightsList, Database database){
         FlightsAdapter.context = context;
         this.flightsList = flightsList;
         FlightsAdapter.database = database;
     }
 
+    //object holder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_flights, parent, false);
@@ -38,22 +42,27 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
         return holder;
     }
 
+    //set object data
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.setData(flightsList.get(position));
     }
 
+    //returns flights count in query
     @Override
     public int getItemCount() {
         return flightsList.size();
     }
 
+    //inner viewholder class
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
+        //data structures
         AppCompatImageView ivFlightImage;
         TextView tvFlightName, tvDepTime, tvArrTime, tvDuration, tvHalt, tvPrice;
         Button btBook;
 
+        //initialize structures
         private MyViewHolder(View itemView) {
             super(itemView);
 
@@ -67,6 +76,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
             btBook = itemView.findViewById(R.id.btBook);
         }
 
+        //set data in placeholders
         public void setData(final Flight data){
             tvFlightName.setText(data.airlineName);
             tvDepTime.setText(data.departureTime);
@@ -74,11 +84,13 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.MyViewHo
             tvDuration.setText(data.duration);
             tvHalt.setText(data.halt);
             tvPrice.setText(data.cost);
-            
+
+            //load flight image into imageview
             Glide.with(context)
                     .load(data.airlineURL)
                     .into(ivFlightImage);
 
+            //insert into db only when user confirms
             btBook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

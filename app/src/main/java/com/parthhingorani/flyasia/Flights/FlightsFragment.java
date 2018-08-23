@@ -29,6 +29,7 @@ import java.util.List;
 
 public class FlightsFragment extends Fragment implements View.OnClickListener {
 
+    //data structures
     TextView tvDate, tvError;
     FloatingActionButton fabSearch;
     NumberPicker numberPicker;
@@ -57,6 +58,7 @@ public class FlightsFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_flights, container, false);
 
+        //initialization
         tvDate = view.findViewById(R.id.tvSearchDate);
         tvError = view.findViewById(R.id.emsgNoFlights);
         numberPicker = view.findViewById(R.id.npTravellers);
@@ -84,9 +86,11 @@ public class FlightsFragment extends Fragment implements View.OnClickListener {
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvFlights.setLayoutManager(linearLayoutManager);
 
+        //insert data into tables
         database.insertIntoFlight();
         database.insertIntoAirport();
 
+        //get airports and load into adapter
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, database.getAirports());
         spnSource.setAdapter(spinnerAdapter);
         spnDestination.setAdapter(spinnerAdapter);
@@ -116,6 +120,7 @@ public class FlightsFragment extends Fragment implements View.OnClickListener {
             case R.id.fabSearch:
                 searchLayout.setVisibility(View.GONE);
                 listingsLayout.setVisibility(View.VISIBLE);
+                //get flights and load into adapter
                 populateFlights();
                 flightsAdapter = new FlightsAdapter(getActivity(), flightsList, database);
                 rvFlights.setAdapter(flightsAdapter);
@@ -125,11 +130,13 @@ public class FlightsFragment extends Fragment implements View.OnClickListener {
 
     private void populateFlights()  {
 
+        //flight fetch from db on user query
         flightsList = database.getFlights(spnSource.getSelectedItem().toString().substring(0,3),
                 spnDestination.getSelectedItem().toString().substring(0,3),
                 tvDate.getText().toString());
 //        flightsAdapter.notifyDataSetChanged();
 
+        //show error if not found
         if (flightsList == null)    {
             tvError.setVisibility(View.VISIBLE);
             rvFlights.setVisibility(View.GONE);

@@ -27,6 +27,7 @@ import java.util.List;
 
 public class BookingsFragment extends Fragment {
 
+    //data structures
     TextView tvError;
     BookingsAdapter flightsAdapter;
     RecyclerView rvFlights;
@@ -49,6 +50,7 @@ public class BookingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bookings, container, false);
 
+        //initialization
         tvError = view.findViewById(R.id.emsgNoBookings);
         rvFlights = view.findViewById(R.id.rvBookedFlights);
 
@@ -57,6 +59,7 @@ public class BookingsFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvFlights.setLayoutManager(linearLayoutManager);
 
+        //get booked flights and load into adapter
         populateFlights();
         flightsAdapter = new BookingsAdapter(getActivity(), flightsList, database);
         rvFlights.setAdapter(flightsAdapter);
@@ -66,9 +69,11 @@ public class BookingsFragment extends Fragment {
 
     private void populateFlights()  {
 
+        //flight fetch from db
         flightsList = database.getBookedFlights();
 //        flightsAdapter.notifyDataSetChanged();
 
+        //show error if not found
         if (flightsList == null)    {
             tvError.setVisibility(View.VISIBLE);
             rvFlights.setVisibility(View.GONE);

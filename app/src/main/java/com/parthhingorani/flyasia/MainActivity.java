@@ -14,6 +14,7 @@ import com.parthhingorani.flyasia.Profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    //data structures
     BottomNavigationView navigation;
 
     private boolean loadFragment(Fragment fragment) {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             Fragment fragment = null;
 
+            //load fragment on user's selection
             switch (item.getItemId()) {
                 case R.id.navigation_flights:
                     fragment = new FlightsFragment();

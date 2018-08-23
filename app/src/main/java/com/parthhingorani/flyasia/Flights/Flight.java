@@ -1,5 +1,6 @@
 package com.parthhingorani.flyasia.Flights;
 
+//model class for flights
 public class Flight {
 
     public String flightID, airlineURL, airlineName, duration, departureTime, arrivalTime, halt, cost, source, destination, date;

@@ -15,6 +15,7 @@ import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
 
+    //data structures and constants
     public static final String DATABASE_NAME = "onedirect.db";
     public static final String TABLE_FLIGHTS = "flights";
     public static final String TABLE_AIRPORTS = "airports";
@@ -22,10 +23,12 @@ public class Database extends SQLiteOpenHelper {
     List<String> airportsList;
     List<Flight> flightsList;
 
+    //create database
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
+    //create tables
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_FLIGHTS + " (flight_id integer primary key autoincrement, airline_url text, airline_name text, duration text, dep_time text, arr_time text, halt text, cost text, source text, destination text, date text)");
@@ -33,6 +36,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_BOOKED_FLIGHTS + " (flight_id integer primary key autoincrement, airline_url text, airline_name text, duration text, dep_time text, arr_time text, halt text, cost text, source text, destination text, date text)");
     }
 
+    //re-create tables if db destroyed or upgraded
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TABLE_FLIGHTS);
@@ -41,6 +45,7 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //insert data into flights table
     public void insertIntoFlight()  {
         insertFlight("https://airastana.com/Portals/_default/Skins/AirAstana//img/AirAstana-logo.png",
                 "Air Astana ","11h 55m","11:35", "21:00", "Via ALA", "₹ 34,138",
@@ -50,11 +55,13 @@ public class Database extends SQLiteOpenHelper {
                 "DEL", "SVO", "24-8-2018");
     }
 
+    //insert data into airports table
     public void insertIntoAirport() {
         insertAirport("DEL", "Delhi");
         insertAirport("SVO", "Moscow");
     }
 
+    //insert a flight
     public void insertFlight(String url, String name, String duration, String departure, String arrival, String halt, String cost, String source, String destination, String date)  {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -71,6 +78,7 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_FLIGHTS, null, values);
     }
 
+    //insert an airport
     public void insertAirport(String id, String name)  {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -79,6 +87,7 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_AIRPORTS, null, values);
     }
 
+    //insert a booked flight
     public void insertBookedFlight(String url, String name, String duration, String departure, String arrival, String halt, String cost, String source, String destination, String date)  {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -95,12 +104,14 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_BOOKED_FLIGHTS, null, values);
     }
 
+    //get flights on user query
     public List<Flight> getFlights(String source, String destination, String date)    {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from " + TABLE_FLIGHTS + " where source=\"" +
                 source + "\" and destination=\"" + destination + "\" and date=\"" + date + "\"", null);
 
         if (result.getCount() == 0) {
+            //return null if no data is found
             result.close();
             return null;
         }
@@ -127,11 +138,13 @@ public class Database extends SQLiteOpenHelper {
         return flightsList;
     }
 
+    //get all airports
     public List<String> getAirports()    {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from " + TABLE_AIRPORTS + " order by airport_name", null);
 
         if (result.getCount() == 0) {
+            //return null if no data is found
             result.close();
             return null;
         }
@@ -148,11 +161,13 @@ public class Database extends SQLiteOpenHelper {
         return airportsList;
     }
 
+    //get all booked flights
     public List<Flight> getBookedFlights()    {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from " + TABLE_BOOKED_FLIGHTS, null);
 
         if (result.getCount() == 0) {
+            //return null if no data is found
             result.close();
             return null;
         }
