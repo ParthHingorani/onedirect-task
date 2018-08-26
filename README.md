@@ -37,5 +37,5 @@ Flight system Android app for OneDirect recruitment round 2.
 
 ## Note:
 
- - I've used Glide library to load images but it doesn't seem to work out right now. I'll fix it after my code review from OneDirect to save my time on submission deadline.
  - Find database script [here](https://github.com/ParthHingorani/onedirect-task/blob/master/app/src/main/java/com/parthhingorani/flyasia/Database.java).
+ - Updated project with additional features can be found [here](https://github.com/ParthHingorani/gyrfalcon).
